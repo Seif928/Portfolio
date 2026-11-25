@@ -1,0 +1,33 @@
+# Development, QA & local tooling artifacts
+qa-screenshots
+qa-screenshots/**
+scripts
+scripts/**
+assets/frames
+assets/frames/**
+.wrangler
+.wrangler/**
+.vercel
+.vercel/**
+.vercelignore
+README.md
+
+# Tests & temporary scripts
+verify_*
+pw_*
+*.test.js
+*.test.mjs
+*.spec.js
+*.spec.mjs
+
+# Environment variables, logs, and temporary files
+.env
+.env.*
+*.log
+*.tmp
+*.bak
+*.pdf
+assets/cv
+assets/cv/**
+.DS_Store
+Thumbs.db

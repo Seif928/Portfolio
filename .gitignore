@@ -1,0 +1,31 @@
+# Vercel & Cloudflare local state
+.vercel
+.vercel/**
+.wrangler
+.wrangler/**
+
+# Environment variables & secrets
+.env
+.env*
+
+# Local QA screenshots, scratch scripts & internal audit reports
+qa-screenshots/
+scripts/
+assets/frames/
+assets/cv/
+PORTFOLIO_*.md
+verify_*
+pw_*
+*.test.js
+*.test.mjs
+*.spec.js
+*.spec.mjs
+
+# Logs & temporary files
+*.log
+*.tmp
+*.bak
+*.pdf
+.DS_Store
+Thumbs.db
+
