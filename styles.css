@@ -563,6 +563,54 @@ button {
   user-select: none;
 }
 
+.hero-portrait-controls {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.5rem;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(14, 18, 25, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+}
+
+.hero-portrait-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.38);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-portrait-dot:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: scale(1.15);
+}
+
+.hero-portrait-dot.active {
+  width: 22px;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+@media (max-width: 1023px) {
+  .hero-portrait-controls {
+    bottom: 0.85rem;
+    right: 1rem;
+    padding: 0.28rem 0.5rem;
+  }
+}
+
 .hero-feather-x,
 .hero-feather-y {
   display: none;
@@ -618,10 +666,11 @@ button {
   }
 
   .hero-portrait-picture {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
 
 .hero-portrait {
     object-position: center 15%;

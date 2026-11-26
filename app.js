@@ -145,6 +145,12 @@
         { tag: "line", attrs: { x1: "2", y1: "12", x2: "22", y2: "12" } },
         { tag: "path", attrs: { d: "M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" } }
       ],
+      document: [
+        { tag: "path", attrs: { d: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" } },
+        { tag: "polyline", attrs: { points: "14 2 14 8 20 8" } },
+        { tag: "line", attrs: { x1: "16", y1: "13", x2: "8", y2: "13" } },
+        { tag: "line", attrs: { x1: "16", y1: "17", x2: "8", y2: "17" } }
+      ],
       store: [{ tag: "polygon", attrs: { points: "5 3 19 12 5 21 5 3" } }]
     };
 
@@ -176,7 +182,7 @@
   }
 
   function hydrateProfile() {
-    const fullName = (profile.name || "Ahmed Gamal Saeed").trim();
+    const fullName = (profile.name || "Seif Mohamed Abdelrady").trim();
     const role = (profile.role || "Software Engineer").trim();
     const tagline = (
       profile.tagline ||
@@ -239,6 +245,17 @@
           photoEl.src = safePhoto;
         }
         photoEl.alt = `Portrait of ${fullName}, ${role}`;
+      }
+    }
+
+    const heroCvBtn = document.getElementById("hero-cv-btn");
+    const safeCv = typeof profile.cvUrl === "string" ? sanitizeUrl(profile.cvUrl.trim(), false) : "";
+    if (heroCvBtn) {
+      if (safeCv) {
+        heroCvBtn.hidden = false;
+        heroCvBtn.href = safeCv;
+      } else {
+        heroCvBtn.hidden = true;
       }
     }
 
@@ -368,6 +385,19 @@
         external: true
       });
     });
+
+    if (safeCv) {
+      channels.push({
+        kind: "cv",
+        title: "Curriculum Vitae",
+        label: "Download CV (PDF)",
+        shortLabel: "CV",
+        ariaLabel: `Download CV for ${fullName}`,
+        href: safeCv,
+        icon: "document",
+        external: true
+      });
+    }
 
     const hasContact = channels.length > 0;
     const contactSection = document.getElementById("contact");
@@ -1786,7 +1816,9 @@
 
   const RESPONSIVE_640_WEB = new Set([
     "assets/projects/twilight/home.webp",
-    "assets/projects/twilight/catalog.webp"
+    "assets/projects/twilight/catalog.webp",
+    "assets/projects/twilight/track.webp",
+    "assets/projects/twilight/contact.webp"
   ]);
 
   const prefetchedUrls = new Set();
@@ -3048,9 +3080,111 @@
   }
 
   /* ------------------------------------------------------------------------
+   * Hero Portrait Multi-Photo Slider
+   * ---------------------------------------------------------------------- */
+  function setupHeroPortraitSlider() {
+    const slider = document.getElementById("hero-portrait-slider");
+    const controls = document.querySelector(".hero-portrait-controls");
+    if (!slider) return;
+
+    const pictures = Array.from(slider.querySelectorAll(".hero-portrait-picture"));
+    const dots = controls ? Array.from(controls.querySelectorAll(".hero-portrait-dot")) : [];
+
+    if (pictures.length <= 1) {
+      if (controls) controls.hidden = true;
+      return;
+    }
+
+    let currentIndex = 0;
+    let timer = null;
+    const intervalMs = 6000;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function goToSlide(index) {
+      if (index === currentIndex || index < 0 || index >= pictures.length) return;
+      pictures[currentIndex].classList.remove("active");
+      if (dots[currentIndex]) {
+        dots[currentIndex].classList.remove("active");
+        dots[currentIndex].setAttribute("aria-pressed", "false");
+      }
+
+      currentIndex = index;
+
+      pictures[currentIndex].classList.add("active");
+      if (dots[currentIndex]) {
+        dots[currentIndex].classList.add("active");
+        dots[currentIndex].setAttribute("aria-pressed", "true");
+      }
+    }
+
+    function nextSlide() {
+      goToSlide((currentIndex + 1) % pictures.length);
+    }
+
+    function startTimer() {
+      if (prefersReduced) return;
+      stopTimer();
+      timer = setInterval(nextSlide, intervalMs);
+    }
+
+    function stopTimer() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        goToSlide(idx);
+        startTimer();
+      });
+    });
+
+    const wrap = document.getElementById("hero-portrait-wrap") || slider;
+    wrap.addEventListener("mouseenter", stopTimer);
+    wrap.addEventListener("mouseleave", startTimer);
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    wrap.addEventListener(
+      "touchstart",
+      (e) => {
+        if (e.changedTouches && e.changedTouches[0]) {
+          touchStartX = e.changedTouches[0].screenX;
+        }
+        stopTimer();
+      },
+      { passive: true }
+    );
+
+    wrap.addEventListener(
+      "touchend",
+      (e) => {
+        if (e.changedTouches && e.changedTouches[0]) {
+          touchEndX = e.changedTouches[0].screenX;
+          const diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) {
+              nextSlide();
+            } else {
+              goToSlide((currentIndex - 1 + pictures.length) % pictures.length);
+            }
+          }
+        }
+        startTimer();
+      },
+      { passive: true }
+    );
+
+    startTimer();
+  }
+
+  /* ------------------------------------------------------------------------
    * Initialize
    * ---------------------------------------------------------------------- */
   hydrateProfile();
+  setupHeroPortraitSlider();
   renderAboutSection();
   renderFeaturedSection();
   renderSkillsSection();

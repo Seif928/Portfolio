@@ -26,6 +26,7 @@ pw_*
 *.tmp
 *.bak
 *.pdf
+!assets/docs/*.pdf
 .DS_Store
 Thumbs.db
 

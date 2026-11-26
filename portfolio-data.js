@@ -15,31 +15,34 @@
 
 const portfolioData = {
   profile: {
-    name: "Ahmed Gamal Saeed",
-    shortName: "Ahmed G. Saeed",
+    name: "Seif Mohamed Abdelrady",
+    shortName: "Seif M. Abdelrady",
     role: "Software Engineer",
     location: "Giza, Egypt",
     graduationYear: "2026",
     tagline: "I build mobile applications with Flutter and develop modern web experiences.",
     specialty: "Flutter Mobile Applications & Web Development",
-    photo: "assets/images/ahmed-headshot.png",
+    photo: "assets/images/seif-headshot.png",
+    photos: [
+      "assets/images/seif-headshot.png"
+    ],
 
-    // Verified contact details (CV remains hidden):
-    email: "gamal6507@gmail.com",
-    phone: "+201095930009",
+    // Contact details:
+    email: "popccc12345@gmail.com",
+    phone: "+201153986004",
     whatsappSameAsPhone: true,
-    cvUrl: "",
+    cvUrl: "assets/docs/Seif_Abdelrady_CV.pdf",
     links: {
-      github: "https://github.com/gamal6507-ops",
-      linkedin: "https://www.linkedin.com/in/ahmed-gamal-saeed-717b54450/"
+      github: "https://github.com/Seif928",
+      linkedin: "https://www.linkedin.com/in/seif-m-1b8766309/"
     },
 
     about: {
       eyebrow: "About Me",
       heading: "Engineering Digital Experiences.",
       paragraphs: [
-        "I'm Ahmed Gamal Saeed, a Software Engineer and a 2026 Management Information Systems graduate based in Giza, Egypt, focused on cross-platform mobile and web engineering.",
-        "I design and build responsive user interfaces alongside structured backend integrations, prioritizing practical workflows and bilingual English and Arabic support."
+        "I'm Seif Mohamed Abdelrady, a Software Engineer and Computer Science graduate from the Faculty of Computers and Artificial Intelligence, University of Sadat City, based in Giza, Egypt, focused on cross-platform mobile and web engineering.",
+        "I design and build responsive user interfaces alongside structured backend integrations, prioritizing practical workflows, clean architecture, and bilingual English and Arabic support."
       ],
       facts: [
         { label: "Location", value: "Giza, Egypt" },
@@ -64,22 +67,27 @@ const portfolioData = {
         {
           title: "Mobile Development",
           icon: "phone",
-          items: ["Flutter", "Dart"]
-        },
-        {
-          title: "Frontend Development",
-          icon: "layout",
-          items: ["HTML5", "CSS3", "JavaScript"]
+          items: ["Flutter", "Dart", "BLoC/Cubit", "Riverpod", "Clean Architecture", "Firebase"]
         },
         {
           title: "Backend & Data",
           icon: "database",
-          items: ["Node.js", "Firebase", "Supabase", "SQL"]
+          items: ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "Supabase", "Django", "REST APIs"]
+        },
+        {
+          title: "Frontend & Web",
+          icon: "layout",
+          items: ["Next.js", "React", "HTML5", "CSS3", "JavaScript"]
+        },
+        {
+          title: "Problem Solving & Core",
+          icon: "code",
+          items: ["Algorithms", "Data Structures", "OOP", "Python", "C++", "C#"]
         },
         {
           title: "Development Tools",
           icon: "gitBranch",
-          items: ["Git"]
+          items: ["Git", "GitHub Actions CI", "Hive", "Dio", "Vercel"]
         }
       ]
     },
@@ -91,19 +99,34 @@ const portfolioData = {
 
     education: [
       {
-        institution: "Madina Higher Institute for Management and Technology",
-        field: "Management Information Systems — Programming Focus",
-        graduation: "2026"
+        institution: "Faculty of Computers and Artificial Intelligence, University of Sadat City",
+        field: "Computer Science & Artificial Intelligence",
+        graduation: "2026 · Grade: Very Good"
       }
     ],
 
     certifications: [
-      { title: "Flutter Certificate" },
-      { title: "ICDL — International Computer Driving Licence" }
+      { title: "Artificial Intelligence and Machine Learning — Information Technology Institute (ITI)" },
+      { title: "Python — Faculty of Computers and Artificial Intelligence, Sadat City" },
+      { title: "Problem Solving — Coach Academy" },
+      { title: "AWS Academy Graduate — Machine Learning for Natural Language Processing" },
+      { title: "AWS Academy Graduate — Cloud Foundations" }
     ],
 
-    // Optional formal work experience (stays hidden while empty)
-    experience: [],
+    experience: [
+      {
+        role: "Calisthenics Coach",
+        company: "Body Fit Gym, Cairo",
+        period: "Apr 2022 – Present",
+        description: "Designed personalized training programs, helped clients build strength and master calisthenics skills, and monitored progress to adjust training plans."
+      },
+      {
+        role: "Data Entry",
+        company: "BreadFast, Cairo",
+        period: "Apr 2024 – Mar 2026",
+        description: "Managed product and inventory data, verified warehouse information before updating the system, and maintained accurate records with high attention to detail."
+      }
+    ],
 
     contact: {
       eyebrow: "Direct Contact",
@@ -118,7 +141,7 @@ const portfolioData = {
     footer: {
       subtitle: "Software Engineer",
       fieldNote: "Software Engineering · Giza, Egypt",
-      copyright: "© Ahmed Gamal Saeed. All rights reserved."
+      copyright: "© Seif Mohamed Abdelrady. All rights reserved."
     }
   },
 
@@ -189,7 +212,7 @@ const portfolioData = {
       ],
       urls: {
         demo: "https://fixo-web-blue.vercel.app/",
-        github: "https://github.com/gamal6507-ops/Fixo_Home_Services"
+        github: "https://github.com/Seif928/Fixo"
       },
       tags: ["Flutter", "NestJS", "PostgreSQL", "Riverpod"]
     },
@@ -208,15 +231,27 @@ const portfolioData = {
       screenshots: [
         {
           src: "assets/projects/twilight/home.webp",
+          label: "Storefront Home",
           alt: "Live desktop homepage of Twilight Perfume Store"
         },
         {
           src: "assets/projects/twilight/catalog.webp",
+          label: "Catalog · Arabic Filters",
           alt: "Live Twilight Perfume Store product catalog with Arabic filters"
+        },
+        {
+          src: "assets/projects/twilight/track.webp",
+          label: "Order Tracking · تتبع الطلب",
+          alt: "Twilight Perfume Store live order tracking and shipping status screen"
+        },
+        {
+          src: "assets/projects/twilight/contact.webp",
+          label: "Support & Delivery · تواصل معنا",
+          alt: "Twilight Perfume Store customer support and delivery options"
         }
       ],
       urls: {
-        live: "https://twilight-perfume-store-five.vercel.app/"
+        live: "https://twilight-perfume-store-git-design-stitch-ui-seifm8012-9240.vercel.app/?_vercel_share=LEdVL4JYeBsl48TbXAZWP2h3jsZoy2XS"
       },
       tags: ["Next.js", "React", "TypeScript", "Supabase"]
     },
@@ -265,7 +300,7 @@ const portfolioData = {
       ],
       urls: {
         demo: "https://tawsela-kappa.vercel.app/",
-        github: "https://github.com/gamal6507-ops/Tawsela"
+        github: "https://github.com/Seif928/Tawsela-App"
       },
       tags: ["Flutter", "Dart", "Firebase", "Arabic RTL"]
     },
@@ -349,7 +384,7 @@ const portfolioData = {
       ],
       urls: {
         demo: "https://verve-store-delta.vercel.app/",
-        github: "https://github.com/gamal6507-ops/E-Commerce-App"
+        github: "https://github.com/Seif928/E_commerce_app"
       },
       tags: ["Flutter", "Firebase", "Node.js", "E-commerce"]
     },
@@ -423,7 +458,7 @@ const portfolioData = {
       ],
       urls: {
         demo: "https://news-app-five-kappa-90.vercel.app/",
-        github: "https://github.com/gamal6507-ops/News_App_"
+        github: "https://github.com/Seif928/news_paper_app"
       },
       tags: ["Flutter", "Dart", "Cubit", "Firebase"]
     },
